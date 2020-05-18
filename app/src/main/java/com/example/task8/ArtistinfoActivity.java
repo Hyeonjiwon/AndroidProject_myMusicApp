@@ -6,14 +6,20 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.bumptech.glide.load.engine.Resource;
+
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class ArtistinfoActivity extends AppCompatActivity {
@@ -28,6 +34,9 @@ public class ArtistinfoActivity extends AppCompatActivity {
 
         //ActionBar actionBar = getSupportActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(true);
+
+        //이미지뷰 참조
+        final ImageView iconImageView = findViewById(R.id.img_chart) ;
 
         // Adapter 생성
         adapter = new ArtistViewAdapter() ;
@@ -47,7 +56,7 @@ public class ArtistinfoActivity extends AppCompatActivity {
                 Log.d("click_item!!!!!", item.getName()  + " / "+ item.getDebut() + " / " + item.getAgency());
 
                 Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                //intent.putExtra("albumID", albumID);
+                intent.putExtra("item", item);
                 view.getContext().startActivities(new Intent[]{intent});
             }
         }) ;
