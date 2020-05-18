@@ -35,9 +35,6 @@ public class ArtistinfoActivity extends AppCompatActivity {
         //ActionBar actionBar = getSupportActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(true);
 
-        //이미지뷰 참조
-        final ImageView iconImageView = findViewById(R.id.img_chart) ;
-
         // Adapter 생성
         adapter = new ArtistViewAdapter() ;
 
@@ -53,7 +50,7 @@ public class ArtistinfoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView parent, View view, int position, long id) {
                 // get item
                 ArtistDTO item = (ArtistDTO) parent.getItemAtPosition(position) ;
-                Log.d("click_item!!!!!", item.getName()  + " / "+ item.getDebut() + " / " + item.getAgency());
+                Log.d("click_item!!!!!", item.getName()  + " / "+ item.getImage());
 
                 Intent intent = new Intent(view.getContext(), DetailActivity.class);
                 intent.putExtra("item", item);

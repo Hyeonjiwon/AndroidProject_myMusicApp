@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.Objects;
 
@@ -35,7 +36,36 @@ public class DetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         artistData = bundle.getParcelable("item");
 
-        Log.d("artistData!!!", artistData.getName());
+        Log.d("artistData!!!", artistData.getName() + " / " + artistData.getImage());
+
+        // 전달받은 artistData 객체의 접근자로 필드값을 하나씩 읽어온 후, 뷰의 속성 값들에 지정
+        //image.setImageDrawable(artistData.getImage());
+
+        selectImage();
+        txt_name.setText(artistData.getName());
+        txt_debut.setText(artistData.getDebut());
+        txt_agency.setText(artistData.getAgency());
+        txt_Award.setText(artistData.getAward());
     }
 
+    public void selectImage() {
+        if(artistData.getName().equals("아이유")) {
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iu));
+        }
+        else if(artistData.getName().equals("볼빨간사춘기")) {
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.bb));
+        }
+        else if(artistData.getName().equals("오마이걸")) {
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.omygirl));
+        }
+        else if(artistData.getName().equals("방탄소년단")) {
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.bts));
+        }
+        else if(artistData.getName().equals("Apink")) {
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.apink));
+        }
+        else {
+            return;
+        }
+    }
 }
