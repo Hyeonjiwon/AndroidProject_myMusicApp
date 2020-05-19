@@ -18,7 +18,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/bmeuljirottf"
-        android:text="Jiwon's Music Box"
+        android:text="Jiwon Music"
         android:textColor="#ffffff"
         android:textSize="37dp"
         app:layout_constraintBottom_toTopOf="@+id/button"

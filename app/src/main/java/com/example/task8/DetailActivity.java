@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -24,8 +26,10 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artistdetail);
 
-        //artistData = (ArtistDTO) getIntent().getSerializableExtra("item");
-        //Log.d("artistInfo!!!", artistData.getName() + artistData.getAgency());
+        artistData = (ArtistDTO) getIntent().getSerializableExtra("item");
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         image = findViewById(R.id.img_chart);
         txt_name = findViewById(R.id.txt_Name);
@@ -48,21 +52,31 @@ public class DetailActivity extends AppCompatActivity {
         txt_Award.setText(artistData.getAward());
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void selectImage() {
         if(artistData.getName().equals("아이유")) {
-            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iu));
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.iu2));
         }
         else if(artistData.getName().equals("볼빨간사춘기")) {
-            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.bb));
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.bb2));
         }
         else if(artistData.getName().equals("오마이걸")) {
-            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.omygirl));
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.o2));
         }
         else if(artistData.getName().equals("방탄소년단")) {
-            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.bts));
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.bts2));
         }
         else if(artistData.getName().equals("Apink")) {
-            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.apink));
+            image.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.apink2));
         }
         else {
             return;

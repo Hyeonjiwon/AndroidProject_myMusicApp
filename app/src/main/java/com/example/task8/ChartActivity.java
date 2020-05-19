@@ -31,9 +31,6 @@ public class ChartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_melon_chart);
 
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.setDisplayHomeAsUpEnabled(true);
-
         recyclerView = findViewById(R.id.recyclerView_chart);
 
 
